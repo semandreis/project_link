@@ -1,81 +1,44 @@
-// ignore_for_file: avoid_unnecessary_containers
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:project_link/home_page.dart';
+import 'package:project_link/login_page.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            appBar: AppBar(
-              title: const Text('ProjectLink'),
-              backgroundColor: Colors.indigo,
-            ),
-            body: const FirstScreen()));
-  }
-}
-
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    // Avoide unnecessary constainers
-    return Container(
-        child: Center(
-            child: ElevatedButton(
-              onPressed: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => const NewScreen())),
-              child: const Text('Move to the next screen'),
-            )
-        ));
-  }
-}
-
-class NewScreen extends StatefulWidget {
-  const NewScreen({Key? key}) : super(key: key);
-
-  @override
-  State<NewScreen> createState() => _NewScreenState();
-}
-
-class _NewScreenState extends State<NewScreen> {
-  TextEditingController textEditingController = TextEditingController();
-
-  @override
-  void dispose() {
-    textEditingController.dispose();
-    // ignore: avoid_print
-    print('Dispose used');
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Projects'),
-        backgroundColor: Colors.indigo,
-      ),
-      // Avoide unnsessary constainers
-      body: Container(
-          child: const Center(
-            child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: Text('This is the new screen, going back will dispose the widget')),
-          )),
+  Widget build(BuildContext context) => MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MainPage(),
     );
-  }
 }
+
+class MainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    body: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if(snapshot.connectionState == ConnectionState.waiting){
+            return Center(child: CircularProgressIndicator());
+          }
+          else if(snapshot.hasError){
+            return Center(child: Text('Something went wrong!'));
+          }
+          else if (snapshot.hasData) {
+            return HomePage();
+          } else {
+            return LoginPage();
+          }
+        }),
+  );
+
+}
+
