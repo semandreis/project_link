@@ -9,12 +9,14 @@ Future main() async {
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
+final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => MaterialApp(
+      navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
