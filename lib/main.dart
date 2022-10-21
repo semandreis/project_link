@@ -4,6 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:project_link/home_page.dart';
 import 'package:project_link/login_page.dart';
 
+import 'BottomBar.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -33,7 +35,8 @@ class MainPage extends StatelessWidget {
             return Center(child: Text('Something went wrong!'));
           }
           else if (snapshot.hasData) {
-            return HomePage();
+            return BottomBar();
+
           } else {
             return LoginPage();
           }
