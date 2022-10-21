@@ -1,9 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
+import 'package:project_link/main.dart';
+import 'package:project_link/utils.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final VoidCallback onClickedSignUp;
+
+  const LoginPage({
+    Key? key,
+    required this.onClickedSignUp,
+  }) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -47,15 +54,45 @@ class _LoginPageState extends State<LoginPage> {
               icon: const Icon(Icons.lock_open, size: 32),
               label: const Text('Sign In', style: TextStyle(fontSize: 24)),
               onPressed: signIn,
+            ),
+            SizedBox(height: 24),
+            RichText(
+              text: TextSpan(
+                style: TextStyle(color: Colors.black, fontSize: 23),
+                text: 'No Account? ',
+                children: [
+                  TextSpan(
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = widget.onClickedSignUp,
+                    text: 'Sign Up',
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.black),
+                  ),
+                ],
+              ),
             )
           ],
         ),
       );
 
   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Center(
+        child: CircularProgressIndicator(),
+      ),
     );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      Utils.showSnackBar(e.message);
+    }
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }
