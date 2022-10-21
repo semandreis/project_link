@@ -35,81 +35,146 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   @override
-  Widget build(BuildContext context) => SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Form(
+  Widget build(BuildContext context) => Scaffold(
+
+        backgroundColor: Colors.black,
+        body: Form(
           key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 40),
-              TextField(
-                  controller: userNameController,
-                  cursorColor: Colors.white,
-                  textInputAction: TextInputAction.next,
-                  decoration: const InputDecoration(labelText: 'UserName'),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('CYALA', style: TextStyle(color: Colors.white, fontSize: 40, letterSpacing: 25, fontWeight: FontWeight.w400),),
+                SizedBox(height: 40,),
+                Text('SIGN UP', style: TextStyle(color: Colors.white, fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.w700),),
+                SizedBox(height: 10,),
+                const SizedBox(height: 40),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(0)),
+                    color: Colors.white30,
                   ),
-              const SizedBox(height: 4),
-              TextFormField(
-                  controller: emailController,
-                  cursorColor: Colors.white,
-                  textInputAction: TextInputAction.next,
-                  decoration: const InputDecoration(labelText: 'Email'),
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (email) =>
-                      email != null && !EmailValidator.validate(email)
-                          ? 'Enter valid email'
-                          : null),
-              const SizedBox(height: 4),
-              TextFormField(
-                  controller: passwordController,
-                  textInputAction: TextInputAction.done,
-                  decoration: const InputDecoration(labelText: 'Password'),
-                  obscureText: true,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) => value != null && value.length < 6
-                      ? 'Enter min. 6 Characters'
-                      : null),
-              const SizedBox(height: 20),
-              TextFormField(
-                  controller: confirmPasswordController,
-                  textInputAction: TextInputAction.done,
-                  decoration: const InputDecoration(labelText: 'Verify Password'),
-                  obscureText: true,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) => value != null && value != passwordController.text
-                      ? 'Password not matching'
-                      : null),
-              const SizedBox(height: 20),
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(50),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    child: TextField(
+                      style: TextStyle(color: Colors.white),
+
+                      controller: userNameController,
+                        cursorColor: Colors.white,
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(hintText: 'Username (ex: cyala)', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
+
+        ),
+                  ),
                 ),
-                icon: const Icon(Icons.arrow_forward, size: 32),
-                label: const Text(
-                  'Sign Up',
-                  style: TextStyle(fontSize: 24),
+                const SizedBox(height: 10),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(0)),
+                    color: Colors.white30,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    child: TextFormField(
+                        style: TextStyle(color: Colors.white),
+
+                        controller: emailController,
+                        cursorColor: Colors.white,
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(hintText: 'Email (ex: cyala@gmail.com)', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: (email) =>
+                            email != null && !EmailValidator.validate(email)
+                                ? 'Enter valid email'
+                                : null),
+                  ),
                 ),
-                onPressed: signUp,
-              ),
-              SizedBox(height: 24),
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(color: Colors.black, fontSize: 23),
-                  text: 'Already have an account ? ',
-                  children: [
-                    TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = widget.onClickedSignUp,
-                      text: 'Log In',
-                      style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: Colors.black),
+                const SizedBox(height: 10),
+                Container(
+                  decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(0)),
+                  color: Colors.white30,
+                ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    child: TextFormField(
+                        style: TextStyle(color: Colors.white),
+
+                        controller: passwordController,
+                        textInputAction: TextInputAction.done,
+
+                        decoration: const InputDecoration(hintText: 'Password', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
+                        obscureText: true,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: (value) => value != null && value.length < 6
+                            ? 'Enter min. 6 Characters'
+                            : null),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(0)),
+                    color: Colors.white30,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    child: TextFormField(
+                        style: TextStyle(color: Colors.white),
+
+                        controller: confirmPasswordController,
+                        textInputAction: TextInputAction.done,
+
+                        decoration: const InputDecoration(hintText: 'Confirm Password', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
+                        obscureText: true,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: (value) => value != null && value != passwordController.text
+                            ? 'Password not matching'
+                            : null),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: signUp,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(5))
                     ),
-                  ],
+                    height: 40,
+                    width: 300,
+                    
+                    child: Center(child: Text('SIGN UP',style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),)),
+
+                  ),
                 ),
-              )
-            ],
+                SizedBox(height: 20),
+                Container(
+                  height: 0.5,
+                  width: 350,
+                  color: Colors.white,
+                ),
+                SizedBox(height: 15),
+
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(color: Colors.white, fontSize: 17),
+                    text: 'Already have an account? ',
+                    children: [
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = widget.onClickedSignUp,
+                        text: 'Log In',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue, fontWeight: FontWeight.w900),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       );

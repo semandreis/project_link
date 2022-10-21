@@ -28,46 +28,90 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
-  Widget build(BuildContext context) => SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: Colors.black,
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 40),
-            TextField(
-                controller: emailController,
-                cursorColor: Colors.white,
-                textInputAction: TextInputAction.next,
-                decoration: const InputDecoration(labelText: 'Email')),
-            const SizedBox(height: 4),
-            TextField(
-              controller: passwordController,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(labelText: 'Password'),
-              obscureText: true,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(50),
+            Text('CYALA', style: TextStyle(color: Colors.white, fontSize: 40, letterSpacing: 25, fontWeight: FontWeight.w400),),
+            SizedBox(height: 50,),
+
+
+            Padding(
+              padding: const EdgeInsets.only(left: 10,right: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(0)),
+                  color: Colors.white30,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10,right: 10),
+                  child: TextField(
+
+                      controller: emailController,
+                      cursorColor: Colors.white,
+                      style: TextStyle(color: Colors.white),
+                      textInputAction: TextInputAction.next,
+                      decoration: const InputDecoration(hintText: 'Email (ex: cyala@gmail.com)', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),)),
+                ),
               ),
-              icon: const Icon(Icons.lock_open, size: 32),
-              label: const Text('Sign In', style: TextStyle(fontSize: 24)),
-              onPressed: signIn,
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 10,right: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(0)),
+                  color: Colors.white30,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10,right: 10),
+                  child: TextField(
+                    style: TextStyle(color: Colors.white),
+                    controller: passwordController,
+                    textInputAction: TextInputAction.done,
+                    decoration: const InputDecoration(hintText: 'Password', hintStyle: TextStyle(color: Colors.white70),focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))),
+                    obscureText: true,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
+
+            GestureDetector(
+              onTap: signIn ,
+              child: Container(height: 40, width: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  color: Colors.white,
+                ),
+
+                child: Center(child: Text('SIGN IN', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),)),
+
+              ),
+            ),
+
+            SizedBox(height: 20),
+            Container(
+              height: 0.5,
+              width: 350,
+              color: Colors.white,
+            ),
+            SizedBox(height: 20,),
             RichText(
               text: TextSpan(
-                style: TextStyle(color: Colors.black, fontSize: 23),
-                text: 'No Account? ',
+                style: TextStyle(color: Colors.white, fontSize: 17),
+                text: 'Don\'t have an account? ',
                 children: [
                   TextSpan(
                     recognizer: TapGestureRecognizer()
                       ..onTap = widget.onClickedSignUp,
-                    text: 'Sign Up',
+                    text: 'Create Account',
                     style: TextStyle(
+                      fontSize: 17,
                         decoration: TextDecoration.underline,
-                        color: Colors.black),
+                        fontWeight: FontWeight.w700,
+                        color: Colors.blue),
                   ),
                 ],
               ),
@@ -81,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       barrierDismissible: false,
       builder: (context) => Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(color: Colors.white,),
       ),
     );
     try {
