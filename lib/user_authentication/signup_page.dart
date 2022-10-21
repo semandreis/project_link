@@ -1,9 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:project_link/main.dart';
-import 'package:project_link/utils.dart';
+import 'package:project_link/user_authentication/utils.dart';
 
 class SignUpPage extends StatefulWidget {
   final VoidCallback onClickedSignUp;
@@ -19,13 +20,17 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final formKey = GlobalKey<FormState>();
+  final userNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
+    userNameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -38,6 +43,13 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 40),
+              TextField(
+                  controller: userNameController,
+                  cursorColor: Colors.white,
+                  textInputAction: TextInputAction.next,
+                  decoration: const InputDecoration(labelText: 'UserName'),
+                  ),
+              const SizedBox(height: 4),
               TextFormField(
                   controller: emailController,
                   cursorColor: Colors.white,
@@ -57,6 +69,16 @@ class _SignUpPageState extends State<SignUpPage> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) => value != null && value.length < 6
                       ? 'Enter min. 6 Characters'
+                      : null),
+              const SizedBox(height: 20),
+              TextFormField(
+                  controller: confirmPasswordController,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(labelText: 'Verify Password'),
+                  obscureText: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) => value != null && value != passwordController.text
+                      ? 'Password not matching'
                       : null),
               const SizedBox(height: 20),
               ElevatedButton.icon(
@@ -108,7 +130,16 @@ class _SignUpPageState extends State<SignUpPage> {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
-      );
+      ).then((value) async{
+        User? user = FirebaseAuth.instance.currentUser;
+        await FirebaseFirestore.instance.collection("users").doc(user?.uid).set(
+            {
+              'uid': user?.uid,
+              'userName': userNameController.text.trim(),
+               'email': emailController.text.trim(),
+               'password': passwordController.text.trim(),
+            });
+      });
     } on FirebaseAuthException catch (e) {
 
       Utils.showSnackBar(e.message);

@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:project_link/user_authentication/auth_page.dart';
 import 'package:project_link/home_page.dart';
-import 'package:project_link/login_page.dart';
+import 'package:project_link/user_authentication/login_page.dart';
+import 'package:project_link/user_authentication/utils.dart';
 
 import 'BottomBar.dart';
 
@@ -11,12 +13,15 @@ Future main() async {
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
+final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => MaterialApp(
+    scaffoldMessengerKey: Utils.messengerKey,
+    navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
@@ -38,7 +43,7 @@ class MainPage extends StatelessWidget {
             return BottomBar();
 
           } else {
-            return LoginPage();
+            return AuthPage();
           }
         }),
   );
