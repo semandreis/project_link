@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
 
 
     return Scaffold(
+
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white24,
         child: Icon(Icons.add),
@@ -24,7 +25,8 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 50),
                 child: Container(
                   width: 450,
-                  height: 150,
+                  height: 200,
+
 
                   child: Padding(
                     padding: const EdgeInsets.all(10),
