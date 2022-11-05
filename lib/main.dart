@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
 import 'package:project_link/user_authentication/auth_page.dart';
-import 'package:project_link/home_page.dart';
-import 'package:project_link/user_authentication/login_page.dart';
 import 'package:project_link/user_authentication/utils.dart';
 
 import 'BottomBar.dart';
@@ -34,16 +33,16 @@ class MainPage extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if(snapshot.connectionState == ConnectionState.waiting){
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           else if(snapshot.hasError){
-            return Center(child: Text('Something went wrong!'));
+            return const Center(child: Text('Something went wrong!'));
           }
           else if (snapshot.hasData) {
-            return BottomBar();
+            return const BottomBar();
 
           } else {
-            return AuthPage();
+            return const AuthPage();
           }
         }),
   );

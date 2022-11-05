@@ -44,7 +44,7 @@ class _ProfileState extends State<Profile> {
               Container(
                 height: 300,
                 width: 450,
-               decoration: BoxDecoration(
+               decoration: const BoxDecoration(
                  gradient: LinearGradient(
                    colors: [Color(0xFF004D40),Colors.black],
                    begin: Alignment.topCenter,
@@ -58,40 +58,40 @@ class _ProfileState extends State<Profile> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Hello,", style: TextStyle(fontSize: 50, color: Colors.white, fontWeight: FontWeight.w900),),
-                      Text(_userName, style: TextStyle(fontSize: 40, color: Colors.white, fontWeight: FontWeight.w200),)
+                      const Text("Hello,", style: TextStyle(fontSize: 50, color: Colors.white, fontWeight: FontWeight.w900),),
+                      Text(_userName, style: const TextStyle(fontSize: 40, color: Colors.white, fontWeight: FontWeight.w200),)
                     ],
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+              const Padding(
+                padding: EdgeInsets.only(left: 20, right: 20),
                 child: Text("Registered Email", style: TextStyle(fontSize: 16, color: Colors.white,fontWeight: FontWeight.w400)),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Text(
                   user.email!,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
-              ),SizedBox(
+              ),const SizedBox(
                 height: 40,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+              const Padding(
+                padding: EdgeInsets.only(left: 20, right: 20),
                 child: Text(
                  "Unhappy with current username?",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 17, right: 17),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                   color: Colors.white12,
                   borderRadius: BorderRadius.all(Radius.circular(10))
                   ),
@@ -101,13 +101,13 @@ class _ProfileState extends State<Profile> {
 
                         controller: userNameController,
                         cursorColor: Colors.white,
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                         textInputAction: TextInputAction.next,
                         decoration: const InputDecoration(hintText: 'New username', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),)),
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Center(
                 child: GestureDetector(
                   onTap: () => FirebaseFirestore.instance.collection('users').doc(user.uid).update({'userName': userNameController.text}),
@@ -118,12 +118,12 @@ class _ProfileState extends State<Profile> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(Icons.change_circle),
-                        SizedBox(width: 10,),
-                        Text("Update username"),
+                        const Icon(Icons.change_circle),
+                        const SizedBox(width: 10,),
+                        const Text("Update username"),
                       ],
                     ),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10))
                     ),
@@ -133,12 +133,12 @@ class _ProfileState extends State<Profile> {
 
 
 
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Center(
                 child: GestureDetector(
                   onTap:  () => FirebaseAuth.instance.signOut(),
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
                         color: Colors.white70
                     ),
@@ -148,8 +148,8 @@ class _ProfileState extends State<Profile> {
                       child: Container(
                         height: 40,
                         width: 300,
-                        child: Center(child: Text("SIGN OUT",style: TextStyle(fontWeight: FontWeight.w700,color: Colors.white),)),
-                        decoration: BoxDecoration(
+                        child: const Center(child: Text("SIGN OUT",style: TextStyle(fontWeight: FontWeight.w700,color: Colors.white),)),
+                        decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(5)),
                           color: Colors.black87
                         ),

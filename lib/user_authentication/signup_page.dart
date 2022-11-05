@@ -45,20 +45,20 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('CYALA', style: TextStyle(color: Colors.white, fontSize: 40, letterSpacing: 25, fontWeight: FontWeight.w400),),
-                SizedBox(height: 40,),
-                Text('SIGN UP', style: TextStyle(color: Colors.white, fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.w700),),
-                SizedBox(height: 10,),
+                const Text('CYALA', style: TextStyle(color: Colors.white, fontSize: 40, letterSpacing: 25, fontWeight: FontWeight.w400),),
+                const SizedBox(height: 40,),
+                const Text('SIGN UP', style: TextStyle(color: Colors.white, fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.w700),),
+                const SizedBox(height: 10,),
                 const SizedBox(height: 40),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(0)),
                     color: Colors.white30,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10,right: 10),
                     child: TextField(
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
 
                       controller: userNameController,
                         cursorColor: Colors.white,
@@ -70,14 +70,14 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 const SizedBox(height: 10),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(0)),
                     color: Colors.white30,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10,right: 10),
                     child: TextFormField(
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
 
                         controller: emailController,
                         cursorColor: Colors.white,
@@ -92,14 +92,14 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 const SizedBox(height: 10),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(0)),
                   color: Colors.white30,
                 ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10,right: 10),
                     child: TextFormField(
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
 
                         controller: passwordController,
                         textInputAction: TextInputAction.done,
@@ -114,14 +114,14 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 const SizedBox(height: 10),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(0)),
                     color: Colors.white30,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10,right: 10),
                     child: TextFormField(
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
 
                         controller: confirmPasswordController,
                         textInputAction: TextInputAction.done,
@@ -138,35 +138,35 @@ class _SignUpPageState extends State<SignUpPage> {
                 GestureDetector(
                   onTap: signUp,
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(5))
                     ),
                     height: 40,
                     width: 300,
                     
-                    child: Center(child: Text('SIGN UP',style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),)),
+                    child: const Center(child: Text('SIGN UP',style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),)),
 
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Container(
                   height: 0.5,
                   width: 350,
                   color: Colors.white,
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
 
                 RichText(
                   text: TextSpan(
-                    style: TextStyle(color: Colors.white, fontSize: 17),
+                    style: const TextStyle(color: Colors.white, fontSize: 17),
                     text: 'Already have an account? ',
                     children: [
                       TextSpan(
                         recognizer: TapGestureRecognizer()
                           ..onTap = widget.onClickedSignUp,
                         text: 'Log In',
-                        style: TextStyle(
+                        style: const TextStyle(
                             decoration: TextDecoration.underline,
                             color: Colors.blue, fontWeight: FontWeight.w900),
                       ),
@@ -186,7 +186,7 @@ class _SignUpPageState extends State<SignUpPage> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => Center(
+      builder: (context) => const Center(
         child: CircularProgressIndicator(),
       ),
     );
@@ -199,8 +199,8 @@ class _SignUpPageState extends State<SignUpPage> {
         User? user = FirebaseAuth.instance.currentUser;
         await FirebaseFirestore.instance.collection("users").doc(user?.uid).set(
             {
-              'uid': user?.uid,
-              'userName': userNameController.text.trim(),
+               'uid': user?.uid,
+               'userName': userNameController.text.trim(),
                'email': emailController.text.trim(),
                'password': passwordController.text.trim(),
             });

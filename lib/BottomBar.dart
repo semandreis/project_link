@@ -17,7 +17,7 @@ class _BottomBarState extends State<BottomBar> {
     });
   }
   PageController pageController= PageController();
-  List<Widget> pages = [HomePage(), Favorites(), Profile()];
+  List<Widget> pages = [const HomePage(), const Favorites(), const Profile()];
 
   void onItemTap(int selectedItem){
 
