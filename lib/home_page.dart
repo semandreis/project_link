@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:project_link/Favorites.dart';
 import 'package:project_link/components/project_card.dart';
+import 'package:project_link/create_post.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -52,10 +54,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white24,
-        child: const Icon(Icons.add),
-        onPressed: () {  },),
+      floatingActionButton:  FloatingActionButton(
+          backgroundColor: Colors.white24,
+          child: const Icon(Icons.add),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CreatePost()),
+            );
+          },),
+
       backgroundColor: Colors.black,
       body: Container(
         child: SingleChildScrollView(
