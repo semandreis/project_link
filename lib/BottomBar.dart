@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_link/Favorites.dart';
 import 'package:project_link/Profile.dart';
+import 'MyProjects.dart';
 import 'home_page.dart';
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class _BottomBarState extends State<BottomBar> {
     });
   }
   PageController pageController= PageController();
-  List<Widget> pages = [const HomePage(), const Favorites(), const Profile()];
+  List<Widget> pages = [const HomePage(), const Favorites(),const MyProjects(), const Profile()];
 
   void onItemTap(int selectedItem){
 
@@ -40,6 +41,7 @@ class _BottomBarState extends State<BottomBar> {
         items: const [
           BottomNavigationBarItem(label: '',icon: Icon(Icons.home_filled, color: Colors.white,)),
           BottomNavigationBarItem(label: '',icon: Icon(Icons.favorite, color: Colors.white,)),
+          BottomNavigationBarItem(label: '',icon: Icon(Icons.star, color: Colors.white,)),
           BottomNavigationBarItem(label: '',icon: Icon(Icons.person, color: Colors.white,)),
 
         ],

@@ -65,42 +65,44 @@ class _HomePageState extends State<HomePage> {
           },),
 
       backgroundColor: Colors.black,
-      body: Container(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 50),
-                child: Container(
-                  width: 450,
-                  height: 200,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            const Text("Good", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w900),),
-                            const Text("Evening ", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w300),),
-                          ],
-                        ),
-                        const Text('Looking forward to work on a project?', style: TextStyle(color: Colors.white60, fontSize: 18),),
-                      ],
+      body: Center(
+        child: Container(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: Container(
+                    width: 450,
+                    height: 200,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Text("Hello", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w900),),
+                              const Text("hola ", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w200),),
+                            ],
+                          ),
+                          const Text('Looking forward to work on a project?', style: TextStyle(color: Colors.white60, fontSize: 18),),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 0),
-                child: Column(
-                  children: getList(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 0),
+                  child: Column(
+                    children: getList(),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
