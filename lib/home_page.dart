@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:project_link/Favorites.dart';
 import 'package:project_link/components/project_card.dart';
+import 'package:project_link/create_post.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -52,47 +54,55 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white24,
-        child: const Icon(Icons.add),
-        onPressed: () {  },),
+      floatingActionButton:  FloatingActionButton(
+          backgroundColor: Colors.white24,
+          child: const Icon(Icons.add),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CreatePost()),
+            );
+          },),
+
       backgroundColor: Colors.black,
-      body: Container(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 50),
-                child: Container(
-                  width: 450,
-                  height: 200,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            const Text("Good", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w900),),
-                            const Text("Evening ", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w300),),
-                          ],
-                        ),
-                        const Text('Looking forward to work on a project?', style: TextStyle(color: Colors.white60, fontSize: 18),),
-                      ],
+      body: Center(
+        child: Container(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: Container(
+                    width: 450,
+                    height: 200,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Text("Hello", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w900),),
+                              const Text("hola ", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w200),),
+                            ],
+                          ),
+                          const Text('Looking forward to work on a project?', style: TextStyle(color: Colors.white60, fontSize: 18),),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 0),
-                child: Column(
-                  children: getList(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 0),
+                  child: Column(
+                    children: getList(),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
