@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
       projectsInfo.add(tempInfo);
       tempInfo = [];
     }
-    }
+  }
 
   //Builds a List of widgets (projects card) that are passed to the UI
   List<Widget> getList() {
