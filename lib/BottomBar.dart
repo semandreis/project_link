@@ -18,7 +18,7 @@ class _BottomBarState extends State<BottomBar> {
     });
   }
   PageController pageController= PageController();
-  List<Widget> pages = [const HomePage(), const Favorites(),const MyProjects(), const Profile()];
+  List<Widget> pages = [const HomePage(), /*const Favorites(),*/ const MyProjects(), const Profile()];
 
   void onItemTap(int selectedItem){
 
@@ -40,7 +40,7 @@ class _BottomBarState extends State<BottomBar> {
         onTap: onItemTap,
         items: const [
           BottomNavigationBarItem(label: '',icon: Icon(Icons.home_filled, color: Colors.white,)),
-          BottomNavigationBarItem(label: '',icon: Icon(Icons.favorite, color: Colors.white,)),
+          /*BottomNavigationBarItem(label: '',icon: Icon(Icons.favorite, color: Colors.white,)),*/
           BottomNavigationBarItem(label: '',icon: Icon(Icons.star, color: Colors.white,)),
           BottomNavigationBarItem(label: '',icon: Icon(Icons.person, color: Colors.white,)),
 

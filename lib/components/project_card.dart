@@ -4,7 +4,8 @@ class ProjectCard extends StatefulWidget {
   final String projectTitle;
   final String projectDesc;
   final String projectRole;
-  const ProjectCard({Key? key, required this.projectTitle,required this.projectDesc,required this.projectRole}) : super(key: key);
+  final bool delete;
+  const ProjectCard({Key? key, required this.projectTitle,required this.projectDesc,required this.projectRole, required this.delete}) : super(key: key);
 
   @override
   State<ProjectCard> createState() => _ProjectCardState();
@@ -16,7 +17,6 @@ class _ProjectCardState extends State<ProjectCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       width: 450,
       decoration: const BoxDecoration(
         color: Colors.white10,

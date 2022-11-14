@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project_link/Favorites.dart';
 import 'package:project_link/components/project_card.dart';
@@ -24,7 +25,6 @@ class _HomePageState extends State<HomePage> {
     _getProjects();
   }
   //Gets the projects from the database and
-
   CollectionReference _projects =
   FirebaseFirestore.instance.collection('projects');
 
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> getList() {
     List<Widget> childs = [];
     for (var i = 0; i < projectsInfo.length; i++) {
-      childs.add(new ProjectCard(projectTitle: projectsInfo[i][0], projectDesc: projectsInfo[i][1], projectRole: projectsInfo[i][2],));
+      childs.add(new ProjectCard(projectTitle: projectsInfo[i][0], projectDesc: projectsInfo[i][1], projectRole: projectsInfo[i][2], delete: false,));
       childs.add(new SizedBox(height: 20,));
     }
     projectsInfo =[];
