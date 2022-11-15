@@ -37,8 +37,7 @@ class _ProfileState extends State<Profile> {
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Center(
-        child: Container(
+      body: Container(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -167,7 +166,7 @@ class _ProfileState extends State<Profile> {
               ),
           ),
         ),
-      ),
+
 
     );
   }

@@ -65,18 +65,24 @@ class _HomePageState extends State<HomePage> {
           },),
 
       backgroundColor: Colors.black,
-      body: Center(
-        child: Container(
+      body: Container(
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: const EdgeInsets.only(top: 0),
                   child: Container(
                     width: 450,
-                    height: 200,
+                    height: 250,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [Color(0xFF004D40),Colors.black],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter
+                      ),
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: Column(
@@ -105,7 +111,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-      ),
+
     );
   }
 }

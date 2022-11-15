@@ -104,7 +104,7 @@ class _MyProjectsState extends State<MyProjects> {
                             ],
                           ),
                           const Text(
-                            'Here a list of your projects',
+                            'Here\'s a list of your projects',
                             style:
                                 TextStyle(color: Colors.white60, fontSize: 18),
                           ),
