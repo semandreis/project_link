@@ -35,6 +35,7 @@ class _MyProjectsState extends State<MyProjects> {
       tempInfo.add(a["title"]);
       tempInfo.add(a["description"]);
       tempInfo.add(a["role"]);
+      tempInfo.add(a["imageUrl"]);
       tempInfo.add(a.id);
       projectsInfo.add(tempInfo);
       tempInfo = [];
@@ -51,6 +52,7 @@ class _MyProjectsState extends State<MyProjects> {
             projectTitle: projectsInfo[i][0],
             projectDesc: projectsInfo[i][1],
             projectRole: projectsInfo[i][2],
+            imageUrl : projectsInfo[i][3],
             delete: true,
           ),
         ),
@@ -148,7 +150,7 @@ class _MyProjectsState extends State<MyProjects> {
             new TextButton(
               child: new Text("Delete"),
               onPressed: () {
-                  FirebaseFirestore.instance.collection('projects').doc(projectsInfo[i][3]).delete();
+                  FirebaseFirestore.instance.collection('projects').doc(projectsInfo[i][4]).delete();
                   Navigator.of(context).pop();
               },
             ),

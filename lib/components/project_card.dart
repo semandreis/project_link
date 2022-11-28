@@ -4,8 +4,9 @@ class ProjectCard extends StatefulWidget {
   final String projectTitle;
   final String projectDesc;
   final String projectRole;
+  final String imageUrl;
   final bool delete;
-  const ProjectCard({Key? key, required this.projectTitle,required this.projectDesc,required this.projectRole, required this.delete}) : super(key: key);
+  const ProjectCard({Key? key, required this.projectTitle,required this.projectDesc,required this.projectRole, required this.delete, required this.imageUrl}) : super(key: key);
 
   @override
   State<ProjectCard> createState() => _ProjectCardState();
@@ -35,9 +36,9 @@ class _ProjectCardState extends State<ProjectCard> {
               height: 300,
               width: 440,
               decoration: const BoxDecoration(
-                color: Colors.white10,
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
+              child:Image.network(widget.imageUrl) ,
             ),
             const SizedBox(height: 10,),
             Text("Project Role: " + widget.projectRole, style: const TextStyle(color: Colors.white),),

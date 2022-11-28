@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
       tempInfo.add(a["title"]);
       tempInfo.add(a["description"]);
       tempInfo.add(a["role"]);
+      tempInfo.add(a["imageUrl"]);
       projectsInfo.add(tempInfo);
       tempInfo = [];
     }
@@ -44,7 +45,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> getList() {
     List<Widget> childs = [];
     for (var i = 0; i < projectsInfo.length; i++) {
-      childs.add(new ProjectCard(projectTitle: projectsInfo[i][0], projectDesc: projectsInfo[i][1], projectRole: projectsInfo[i][2], delete: false,));
+      childs.add(new ProjectCard(projectTitle: projectsInfo[i][0], projectDesc: projectsInfo[i][1], projectRole: projectsInfo[i][2], delete: false, imageUrl: projectsInfo[i][3],));
       childs.add(new SizedBox(height: 20,));
     }
     projectsInfo =[];
