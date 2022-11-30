@@ -107,10 +107,9 @@ class _CreatePostState extends State<CreatePost> {
                             Reference referenceImageToUpload = referenceDirImages.child(uniqueFileName);
 
                             try{
-                              await referenceImageToUpload.putFile(File(file.path));
+                              await referenceImageToUpload.putFile(File(file!.path));
                               imageUrl = await referenceImageToUpload.getDownloadURL();//get img url
                             }catch(error){
-
                             }
                           },
                           icon: Icon(Icons.photo_camera,size: 30,),
