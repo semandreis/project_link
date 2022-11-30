@@ -38,142 +38,147 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) => Scaffold(
 
         backgroundColor: Colors.black,
-        body: Form(
-          key: formKey,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('CYALA', style: TextStyle(color: Colors.white, fontSize: 40, letterSpacing: 25, fontWeight: FontWeight.w400),),
-                const SizedBox(height: 40,),
-                const Text('SIGN UP', style: TextStyle(color: Colors.white, fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.w700),),
-                const SizedBox(height: 10,),
-                const SizedBox(height: 40),
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(0)),
-                    color: Colors.white30,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
-                    child: TextField(
-                      style: const TextStyle(color: Colors.white),
+        body: Center(
+          child: Form(
+            key: formKey,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              child: SingleChildScrollView(
+                child: Column(
 
-                      controller: userNameController,
-                        cursorColor: Colors.white,
-                        textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(hintText: 'Username (ex: cyala)', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
 
-        ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(0)),
-                    color: Colors.white30,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
-                    child: TextFormField(
-                        style: const TextStyle(color: Colors.white),
-
-                        controller: emailController,
-                        cursorColor: Colors.white,
-                        textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(hintText: 'Email (ex: cyala@gmail.com)', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (email) =>
-                            email != null && !EmailValidator.validate(email)
-                                ? 'Enter valid email'
-                                : null),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(0)),
-                  color: Colors.white30,
-                ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
-                    child: TextFormField(
-                        style: const TextStyle(color: Colors.white),
-
-                        controller: passwordController,
-                        textInputAction: TextInputAction.done,
-
-                        decoration: const InputDecoration(hintText: 'Password', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
-                        obscureText: true,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) => value != null && value.length < 6
-                            ? 'Enter min. 6 Characters'
-                            : null),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(0)),
-                    color: Colors.white30,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
-                    child: TextFormField(
-                        style: const TextStyle(color: Colors.white),
-
-                        controller: confirmPasswordController,
-                        textInputAction: TextInputAction.done,
-
-                        decoration: const InputDecoration(hintText: 'Confirm Password', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
-                        obscureText: true,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) => value != null && value != passwordController.text
-                            ? 'Password not matching'
-                            : null),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                GestureDetector(
-                  onTap: signUp,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(5))
-                    ),
-                    height: 40,
-                    width: 300,
-                    
-                    child: const Center(child: Text('SIGN UP',style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),)),
-
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  height: 0.5,
-                  width: 350,
-                  color: Colors.white,
-                ),
-                const SizedBox(height: 15),
-
-                RichText(
-                  text: TextSpan(
-                    style: const TextStyle(color: Colors.white, fontSize: 17),
-                    text: 'Already have an account? ',
-                    children: [
-                      TextSpan(
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = widget.onClickedSignUp,
-                        text: 'Log In',
-                        style: const TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Colors.blue, fontWeight: FontWeight.w900),
+                  children: [
+                    const Text('CYALA', style: TextStyle(color: Colors.white, fontSize: 40, letterSpacing: 25, fontWeight: FontWeight.w400),),
+                    const SizedBox(height: 40,),
+                    const Text('SIGN UP', style: TextStyle(color: Colors.white, fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.w700),),
+                    const SizedBox(height: 10,),
+                    const SizedBox(height: 40),
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        color: Colors.white30,
                       ),
-                    ],
-                  ),
-                )
-              ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10,right: 10),
+                        child: TextField(
+                          style: const TextStyle(color: Colors.white),
+
+                          controller: userNameController,
+                            cursorColor: Colors.white,
+                            textInputAction: TextInputAction.next,
+                            decoration: const InputDecoration(hintText: 'Username (ex: cyala)', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
+
+          ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        color: Colors.white30,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10,right: 10),
+                        child: TextFormField(
+                            style: const TextStyle(color: Colors.white),
+
+                            controller: emailController,
+                            cursorColor: Colors.white,
+                            textInputAction: TextInputAction.next,
+                            decoration: const InputDecoration(hintText: 'Email (ex: cyala@gmail.com)', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (email) =>
+                                email != null && !EmailValidator.validate(email)
+                                    ? 'Enter valid email'
+                                    : null),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(0)),
+                      color: Colors.white30,
+                    ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10,right: 10),
+                        child: TextFormField(
+                            style: const TextStyle(color: Colors.white),
+
+                            controller: passwordController,
+                            textInputAction: TextInputAction.done,
+
+                            decoration: const InputDecoration(hintText: 'Password', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
+                            obscureText: true,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (value) => value != null && value.length < 6
+                                ? 'Enter min. 6 Characters'
+                                : null),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        color: Colors.white30,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10,right: 10),
+                        child: TextFormField(
+                            style: const TextStyle(color: Colors.white),
+
+                            controller: confirmPasswordController,
+                            textInputAction: TextInputAction.done,
+
+                            decoration: const InputDecoration(hintText: 'Confirm Password', hintStyle: TextStyle(color: Colors.white70), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),),
+                            obscureText: true,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (value) => value != null && value != passwordController.text
+                                ? 'Password not matching'
+                                : null),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: signUp,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(5))
+                        ),
+                        height: 40,
+                        width: 300,
+
+                        child: const Center(child: Text('SIGN UP',style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),)),
+
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      height: 0.5,
+                      width: 350,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(height: 15),
+
+                    RichText(
+                      text: TextSpan(
+                        style: const TextStyle(color: Colors.white, fontSize: 17),
+                        text: 'Already have an account? ',
+                        children: [
+                          TextSpan(
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = widget.onClickedSignUp,
+                            text: 'Log In',
+                            style: const TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.blue, fontWeight: FontWeight.w900),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ),
         ),

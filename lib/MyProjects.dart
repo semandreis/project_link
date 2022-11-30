@@ -69,24 +69,30 @@ class _MyProjectsState extends State<MyProjects> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Center(
-        child: Container(
+      body: Container(
+        width: 900,
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: const EdgeInsets.only(top: 0),
                   child: Container(
                     width: 450,
                     height: 200,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [Color(0xFF004D40), Colors.black],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter),
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          SizedBox(height: 50,),
                           Row(
                             children: [
                               const Text(
@@ -125,7 +131,7 @@ class _MyProjectsState extends State<MyProjects> {
             ),
           ),
         ),
-      ),
+
     );
   }
 

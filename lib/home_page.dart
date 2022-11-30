@@ -98,6 +98,7 @@ class _HomePageState extends State<HomePage> {
       ),
       backgroundColor: Colors.black,
       body: Container(
+        width: 900,
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
